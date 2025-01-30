@@ -1,3 +1,4 @@
+require('./db/mongoose')
 const express = require('express')
 const cors = require('cors')
 const userRouter = require('./routers/user.js')

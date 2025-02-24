@@ -5,7 +5,7 @@ This document specifies the API endpoints required for user interactions within 
 
 Models: https://docs.google.com/document/d/1dUYiQQQ7SnPoofjc9ARDeyouiO4h2bF8T9ExlDJNoSo/edit?usp=sharing
 
-Figma Wireframe: https://www.figma.com/design/TFyJNM4tbIhBjUC3DHU0uX/Clutch-Stats?node-id=0-1&t=dzePVD5XJrvcTH5i-1
+Figma Wireframe: https://drive.google.com/file/d/1-4vWqWX-w921ZybzY7UH88GEra8qMU1o/view?usp=sharing
 
 ## Authentication
 All endpoints marked with **Bearer Token Required** must include an `Authorization` header with a valid token:

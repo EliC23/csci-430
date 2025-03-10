@@ -2,6 +2,7 @@ require('./db/mongoose')
 const express = require('express')
 const cors = require('cors')
 const userRouter = require('./routers/user.js')
+const betRouter = require('./routers/bet');
  
 const app = express()
  
@@ -13,6 +14,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(userRouter)
+app.use(betRouter)
  
 const port = process.env.PORT
 app.listen(port, () => {

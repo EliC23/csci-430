@@ -2,6 +2,8 @@ const express = require('express');
 const Bet = require('../models/bet');
 const auth = require('../middleware/auth');  
 const axios = require('axios');
+const API_URL = 'https://api.balldontlie.io/v1';
+const API_KEY = process.env.BALLDONTLIE_API_KEY;
 
 const router = new express.Router();
 
@@ -68,18 +70,15 @@ router.patch('/bets/:id', auth, async (req, res) => {
         }
 
         // Fetch player stats
-        const response = await axios.get(`https://api.balldontlie.io/v1/stats?game_ids[]=${bet.gameId}&player_ids[]=${bet.playerId}`, {
-            headers: { Authorization: process.env.BALLDONTLIE_API_KEY }
+        const response = await axios.get(`${API_URL}/stats?game_ids[]=${bet.gameId}&player_ids[]=${bet.playerId}`, {
+            headers: { Authorization: API_KEY }
         });
-        console.log("API Response:", JSON.stringify(response.data, null, 2));
 
         if (!response.data.data.length) {
             return res.status(400).send({ error: "Player stats not available yet." });
         }
 
         const playerStats = response.data.data[0];
-
-        console.log("Extracted Player Stats:", playerStats);
 
         // Calculate absolute score difference
         const actualStats = {

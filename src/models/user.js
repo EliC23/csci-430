@@ -41,6 +41,10 @@ const userSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Player'
     }],
+    betIds: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bet'
+    }],
     tokens: [{
         token: {
             type: String,

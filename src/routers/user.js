@@ -40,7 +40,25 @@ router.post('/user/logout', auth, async (req, res) => {
 
 // Get current user profile
 router.get('/user/me', auth, async (req, res) => {
-    res.send(req.user);
+    try {
+        await req.user.populate({
+            path: 'betIds',
+            select: '_id'
+        });
+
+        res.send({
+            _id: req.user._id,
+            username: req.user.username,
+            email: req.user.email,
+            favoriteTeams: req.user.favoriteTeams,
+            favoritePlayers: req.user.favoritePlayers,
+            betIds: req.user.betIds.map(bet => bet._id),
+            createdAt: req.user.createdAt,
+            updatedAt: req.user.updatedAt
+        });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
 });
 
 // Update user account

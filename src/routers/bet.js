@@ -25,6 +25,10 @@ router.post('/bets', auth, async (req, res) => {
         });
 
         await bet.save();
+
+        req.user.betIds.push(bet._id);
+        await req.user.save();
+        
         res.status(201).send(bet);
     } catch (error) {
         res.status(400).send({ error: error.message });

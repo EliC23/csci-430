@@ -41,7 +41,7 @@ Authorization: Bearer <token>
 
 | **Feature** | **Method** | **Path** | **Auth Required** | **String Params** | **Body Properties** | **Response Codes** |
 |------------|--------|------------------|---------------|--------------|----------------|----------------|
-| **Get Games by Date** | `GET` | `/games` | No | `date` (optional, string, format: YYYY-MM-DD), `start_date` (optional, string, format: YYYY-MM-DD), `end_date` (optional, string, format: YYYY-MM-DD), `team_ids` (optional, string) | None | `200 OK`: List of games, `400 Bad Request`: Missing date |
+| **Get Games by Date** | `GET` | `/games` | No | `date` (required, string, format: YYYY-MM-DD), `start_date` (optional, string, format: YYYY-MM-DD), `end_date` (optional, string, format: YYYY-MM-DD) | None | `200 OK`: List of games, `400 Bad Request`: Missing date |
 | **Get Game Details** | `GET` | `/games/:game_id` | No | None | None | `200 OK`: Game details and player stats (if available), `404 Not Found`: Game not found |
 | **Get Games by Player and Date** | `GET` | `/games/:player_id/:start_date/:end_date` | No | `count`, `skip` (optional, int) | None | `200 OK`: Games for the player in the date range, `404 Not Found`: Player or games not found |
 

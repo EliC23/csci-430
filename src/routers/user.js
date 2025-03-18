@@ -3,7 +3,7 @@ const User = require('../models/user');
 const auth = require('../middleware/auth');
 
 const router = new express.Router();
-
+console.log('User routes loaded'); 
 // Register a new user
 router.post('/user', async (req, res) => {
     try {

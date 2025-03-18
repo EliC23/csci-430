@@ -25,5 +25,4 @@ app.use(gamesRouter)
 const port = process.env.PORT
 app.listen(port, () => {
     console.log('Listening on port ' + port)
-    console.log("JWT Secret:", process.env.JWT_SECRET);
 })

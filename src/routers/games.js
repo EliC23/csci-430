@@ -8,14 +8,21 @@ const API_KEY = process.env.BALLDONTLIE_API_KEY;
 // Get games by date
 router.get('/games', async (req, res) => {
     try {
-        const { date } = req.query;
-        if (!date) {
-            return res.status(400).send({ error: 'Date query parameter is required (YYYY-MM-DD).' });
-        }
+        const { date, start_date, end_date, team_ids } = req.query;
+        let url = `${API_URL}/games?`;
+
+        if (date) url += `dates[]=${date}&`;
+        if (start_date) url += `start_date=${start_date}&`;
+        if (end_date) url += `end_date=${end_date}&`;
+        if (team_ids) url += `team_ids[]=${team_ids}&`;
+        //if (!date) {
+           // return res.status(400).send({ error: 'Date query parameter is required (YYYY-MM-DD).' });
+       // }
         
         const response = await axios.get(`${API_URL}/games?dates[]=${date}`, {
             headers: { Authorization: API_KEY }
         });
+
         res.send(response.data);
     } catch (error) {
         res.status(500).send({ error: error.message });

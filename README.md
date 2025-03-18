@@ -7,8 +7,8 @@
 4. [Teams](#teams)
 5. [Games](#games)
 6. [Players](#players)
-7. [Bets](#bets)
-8. [Favorites](#favorites) *(WIP)*
+7. [Bets](#bets) *(Not Available)*
+8. [Favorites](#favorites) *(Not Available)*
 
 ## Overview
 This document specifies the API endpoints required for user interactions within the Clutch Stats web app. Each endpoint includes details such as the HTTP method, path, authentication requirements, query parameters, request body properties, and expected responses.
@@ -52,7 +52,7 @@ Authorization: Bearer <token>
 | **Get List of Players** | `GET` | `/players` | No | `Name-Search` (optional, string), `count`, `skip` (optional, int) | None | `200 OK`: List of players |
 | **Get Player Details & Stats** | `GET` | `/players/:player_id` | No | `season` (optional, string, default: 2024) | None | `200 OK`: Player details and season stats, `404 Not Found`: Player not found |
 
-## Bets
+## Bets *(Not Available)*
 
 **Bets** allow users to predict the performance of an individual player in a specific game. Users must select a player from a future game and make predictions on their points, assists, rebounds, three-pointers made, and steals. The goal is to minimize the difference between predicted and actual stats. 
 
@@ -62,7 +62,7 @@ Authorization: Bearer <token>
 | **Get User Bets** | `GET` | `/bets` | Yes | `count`, `skip` (optional, int) | None | `200 OK`: List of user bets, `401 Unauthorized` |
 | **Get Bet by ID** | `GET` | `/bets/:id` | Yes | None | None | `200 OK`: Bet details, `404 Not Found`: Bet not found |
 
-## Favorites *(WIP)*
+## Favorites *(Not Available)*
 
 | **Feature** | **Method** | **Path** | **Auth Required** | **String Params** | **Body Properties** | **Response Codes** |
 |------------|--------|------------------|---------------|--------------|----------------|----------------|

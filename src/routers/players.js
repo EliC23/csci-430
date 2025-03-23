@@ -7,11 +7,17 @@ const API_KEY = process.env.BALLDONTLIE_API_KEY;
 // Get all players (with optional search query by Name)
 router.get('/players', async (req, res) => {
     try {
-        const { search } = req.query;
-        let url = `${API_URL}/players`;
-        if (search) {
-            url += `?search=${search}`;
+        const { "name-search": nameSearch, cursor, per_page } = req.query;
+        const perPage = per_page || 25;
+
+        let url = `${API_URL}/players?`;
+        if (nameSearch) {
+            url += `search=${nameSearch}&`;
         }
+        if (cursor) {
+            url += `cursor=${cursor}&`;
+        }
+        url += `per_page=${perPage}`;
 
         const response = await axios.get(url, {
             headers: { Authorization: API_KEY }

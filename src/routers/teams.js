@@ -8,7 +8,7 @@ const API_KEY = process.env.BALLDONTLIE_API_KEY;
 // Get all teams (with optional search and conference filter)
 router.get('/teams', async (req, res) => {
     try {
-        const { search, conference } = req.query;
+        const { "team-search": teamSearch, conference } = req.query;
         let url = `${API_URL}/teams`;
 
         const response = await axios.get(url, {
@@ -18,8 +18,8 @@ router.get('/teams', async (req, res) => {
         let teams = response.data.data; // Extract teams array
 
         // Apply search filtering
-        if (search) {
-            const searchRegex = new RegExp(search, 'i');
+        if (teamSearch) {
+            const searchRegex = new RegExp(teamSearch, 'i');
             teams = teams.filter(team => 
                 searchRegex.test(team.name) || 
                 searchRegex.test(team.full_name) || 
@@ -73,5 +73,4 @@ router.get('/teams/:id', async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 });
-
 module.exports = router;

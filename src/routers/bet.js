@@ -38,7 +38,12 @@ router.post('/bets', auth, async (req, res) => {
 // Get User's Bets (Update Completed Bets)
 router.get('/bets', auth, async (req, res) => {
     try {
-        const bets = await Bet.find({ userId: req.user._id });
+        const limit = parseInt(req.query.limit, 10) || 10;
+        const offset = parseInt(req.query.offset, 10) || 0;
+
+        const bets = await Bet.find({ userId: req.user._id })
+        .limit(limit)
+        .skip(offset);
 
         if (!bets.length) {
             return res.send([]);
@@ -99,21 +104,5 @@ router.get('/bets', auth, async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 });
-
-// Get a Single Bet by ID
-router.get('/bets/:id', auth, async (req, res) => {
-    try {
-        const bet = await Bet.findOne({ _id: req.params.id, userId: req.user._id });
-
-        if (!bet) {
-            return res.status(404).send({ error: "Bet not found." });
-        }
-
-        res.send(bet);
-    } catch (error) {
-        res.status(500).send({ error: error.message });
-    }
-});
-
 
 module.exports = router;

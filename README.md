@@ -9,8 +9,8 @@
 5. [Teams](#teams)
 6. [Games](#games)
 7. [Players](#players)
-8. [Bets](#bets)
-9. [Favorites](#favorites)
+8. [Bets](Not Available)
+9. [Favorites](Not Available)
 
 ## Overview
 
@@ -64,7 +64,7 @@ Authorization: Bearer <token>
 | **Get List of Players**        | `GET`      | `/players`     | No                | `name-search`, `cursor`, `per_page` | None                | `200 OK`                  |
 | **Get Player Details & Stats** | `GET`      | `/players/:id` | No                | `season`                            | None                | `200 OK`, `404 Not Found` |
 
-## Bets
+## Bets (Not Available)
 
 **Bets** allow users to predict the performance of a specific player in a specific game across 5 statistical categories. Once the game is completed, the actual stats are fetched and scored.
 
@@ -73,7 +73,7 @@ Authorization: Bearer <token>
 | **Place Bet**     | `POST`     | `/bets`  | Yes               | None              | `gameId` (required), `playerId` (required), `predictions` (required object: `points`, `assists`, `rebounds`, `threes`, `steals`) | `201 Created`, `400 Bad Request` |
 | **Get User Bets** | `GET`      | `/bets`  | Yes               | `limit`, `offset` | None                                                                                                                             | `200 OK`, `401 Unauthorized`     |
 
-## Favorites
+## Favorites (Not Available)
 
 | **Feature**                | **Method** | **Path**                | **Auth Required** | **String Params** | **Body Properties**    | **Response Codes**               |
 | -------------------------- | ---------- | ----------------------- | ----------------- | ----------------- | ---------------------- | -------------------------------- |

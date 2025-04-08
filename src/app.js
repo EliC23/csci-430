@@ -6,6 +6,7 @@ const betRouter = require('./routers/bet.js')
 const playersRouter = require('./routers/players.js') 
 const teamsRouter = require('./routers/teams.js')
 const gamesRouter = require('./routers/games.js')
+const favoritesRouter = require('./routers/favorites.js')
  
 const app = express()
  
@@ -21,6 +22,7 @@ app.use(betRouter)
 app.use(playersRouter)
 app.use(teamsRouter)
 app.use(gamesRouter)
+app.use(favoritesRouter)
  
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

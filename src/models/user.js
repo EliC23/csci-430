@@ -33,14 +33,8 @@ const userSchema = new Schema({
         trim: true,
         minlength: 8
     },
-    favoriteTeams: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Team'
-    }],
-    favoritePlayers: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Player'
-    }],
+    favoritePlayers: [{ type: String }], // or Number, depending on your API IDs
+    favoriteTeams: [{ type: String }],   // or Number
     betIds: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Bet'

@@ -79,10 +79,8 @@ Authorization: Bearer <token>
 | -------------------------- | ---------- | ----------------------- | ----------------- | ----------------- | ---------------------- | -------------------------------- |
 | **Favorite Player**        | `POST`     | `/favorite-players`     | Yes               | None              | `player_id` (required) | `201 Created`, `400 Bad Request` |
 | **Get Favorite Players**   | `GET`      | `/favorite-players`     | Yes               | None              | None                   | `200 OK`, `401 Unauthorized`     |
-| **Update Favorite Player** | `PATCH`    | `/favorite-players/:id` | Yes               | None              | `player_id` (required) | `200 OK`, `400 Bad Request`      |
 | **Remove Favorite Player** | `DELETE`   | `/favorite-players/:id` | Yes               | None              | None                   | `200 OK`, `404 Not Found`        |
 | **Favorite Team**          | `POST`     | `/favorite-teams`       | Yes               | None              | `team_id` (required)   | `201 Created`, `400 Bad Request` |
 | **Get Favorite Teams**     | `GET`      | `/favorite-teams`       | Yes               | None              | None                   | `200 OK`, `401 Unauthorized`     |
-| **Update Favorite Team**   | `PATCH`    | `/favorite-teams/:id`   | Yes               | None              | `team_id` (required)   | `200 OK`, `400 Bad Request`      |
 | **Remove Favorite Team**   | `DELETE`   | `/favorite-teams/:id`   | Yes               | None              | None                   | `200 OK`, `404 Not Found`        |
 

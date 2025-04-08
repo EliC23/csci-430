@@ -37,8 +37,9 @@ router.get('/games/:player_id/:start_date/:end_date', async (req, res) => {
     const gamesResponse = await axios.get(gamesUrl, {
       headers: { Authorization: API_KEY }
     });
-
-    res.send(gamesResponse.data);
+    res.json({
+      data: gamesResponse.data.data,
+    });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
@@ -90,6 +91,7 @@ router.get('/games', async (req, res) => {
 router.get('/games/:id', async (req, res) => {
   try {
     const gameId = req.params.id;
+    const per_page = req.query.per_page || 60;
 
     // Fetch game details
     const gameResponse = await axios.get(`${API_URL}/games/${gameId}`, {
@@ -97,7 +99,7 @@ router.get('/games/:id', async (req, res) => {
     });
 
     // Fetch player stats for the game
-    const statsResponse = await axios.get(`${API_URL}/stats?game_ids[]=${gameId}`, {
+    const statsResponse = await axios.get(`${API_URL}/stats?game_ids[]=${gameId}&per_page=${per_page}`, {
       headers: { Authorization: API_KEY }
     });
 
@@ -133,7 +135,8 @@ router.get('/games/:id', async (req, res) => {
         home_team_score: game.home_team_score,
         visitor_team_score: game.visitor_team_score
       },
-      playerStats
+      playerStats,
+      meta: statsResponse.data.meta
     });
   } catch (error) {
     res.status(500).send({ error: error.message });

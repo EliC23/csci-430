@@ -106,7 +106,7 @@ router.get('/games/:id', async (req, res) => {
       player_id: stat.id,
       player_name: `${stat.player.first_name} ${stat.player.last_name}`,
       team: stat.team.full_name,
-      mintues: stat.min || 0,
+      minutes: stat.min || 0,
       points: stat.pts || 0,
       rebounds: stat.reb || 0,
       assists: stat.ast || 0,
